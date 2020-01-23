@@ -1,0 +1,22 @@
+cron:
+  - description: "毎月20, 25日10時(日本時間)に実行"
+    url: /cron
+    timezone: Asia/Tokyo
+    schedule: 20, 25 of month 10:00
+    retry_parameters:
+      min_backoff_seconds: 2.5
+      max_doublings: 5
+
+  - description: "毎月末日10時(日本時間)に実行"
+    url: /cron
+    # 日本との時差が-14時間の国を見つける
+    timezone: Etc/GMT+5
+    schedule: 1 of month 00:00
+    retry_parameters:
+      min_backoff_seconds: 2.5
+      max_doublings: 5
+
+  - description: "毎日0時を起点とし、1分単位で実行"
+    url: /cron
+    timezone: Asia/Tokyo
+    schedule: every 1 minutes
